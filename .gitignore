@@ -1,0 +1,37 @@
+# C++ objects and archives
+*.slo
+*.lo
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.def
+*.exp
+
+# Executables
+*.exe
+*.out
+*.app
+NovaCockpit
+appNovaCockpit
+
+# CMake & Qt Build folders
+build/
+build-*/
+CMakeCache.txt
+CMakeFiles/
+CMakeLists.txt.user
+*.qm
+*.stash
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+Makefile*
+
+# OS specific files
+.DS_Store
+Thumbs.db
