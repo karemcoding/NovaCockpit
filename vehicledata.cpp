@@ -38,6 +38,19 @@ void VehicleData::setRpm(int newRpm)
     emit rpmChanged();
 }
 
+VehicleData::GearShift VehicleData::currentGear() const
+{
+    return m_currentGear;
+}
+
+void VehicleData::setCurrentGear(VehicleData::GearShift gear) {
+    if (m_currentGear != gear)
+    {
+        m_currentGear = gear;
+        emit currentGearChanged();
+    }
+}
+
 void VehicleData::initCanBus()
 {
     // Create a CAN device using the 'socketcan' plugin on 'vcan0' interface
@@ -87,5 +100,17 @@ void VehicleData::processReceivedFrames()
                 setRpm(realRpm);
             }
         }
+        else if (frame.frameId() == 0x125) {
+            QByteArray payload = frame.payload();
+            if (!payload.isEmpty()) {
+                quint8 gearValue = static_cast<quint8>(payload.at(0));
+
+                if (gearValue <= 3) {
+                    GearShift realGear = static_cast<GearShift>(gearValue);
+                    setCurrentGear(realGear);
+                }
+            }
+        }
     }
 }
+

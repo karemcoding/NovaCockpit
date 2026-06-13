@@ -126,6 +126,53 @@ Window {
         //     console.log("[QML] Received speed:", vehicleProvider.speed)
         // }
     }
+    Row {
+        id: gearSelector
+        spacing: 25
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 50
+
+        Text {
+            text: "P"
+            font.pixelSize: 36
+            font.bold: true
+            font.family: "Ubuntu"
+
+            color: vehicleProvider.currentGear === 0 ? "#00ffcc" : "#333333"
+            Behavior on color { ColorAnimation { duration: 200 } }
+        }
+
+        Text {
+            text: "R"
+            font.pixelSize: 36
+            font.bold: true
+            font.family: "Ubuntu"
+
+            color: vehicleProvider.currentGear === 1 ? "#ff3333" : "#333333"
+            Behavior on color { ColorAnimation { duration: 200 } }
+        }
+
+        Text {
+            text: "N"
+            font.pixelSize: 36
+            font.bold: true
+            font.family: "Ubuntu"
+
+            color: vehicleProvider.currentGear === 2 ? "#ffcc00" : "#333333"
+            Behavior on color { ColorAnimation { duration: 200 } }
+        }
+
+        Text {
+            text: "D"
+            font.pixelSize: 36
+            font.bold: true
+            font.family: "Ubuntu"
+
+            color: vehicleProvider.currentGear === 3 ? "#00ffcc" : "#333333"
+            Behavior on color { ColorAnimation { duration: 200 } }
+        }
+    }
 }
 
 

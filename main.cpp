@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     vehicle.setSpeed(80);
 
     QQmlApplicationEngine engine;
-
+    qRegisterMetaType<VehicleData::GearShift>("VehicleData::GearShift");
     engine.rootContext()->setContextProperty("vehicleProvider", &vehicle);
 
     QObject::connect(
